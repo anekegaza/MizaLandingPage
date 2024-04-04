@@ -4,16 +4,49 @@ import { arrowRight } from "../assets/icons";
 import { shoes, statistics } from "../constants";
 import { bigShoe1 } from "../assets/images";
 import ShoeCard from "../components/ShoeCard";
+import { ScrollReveal } from "reveal-on-scroll-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Hero = () => {
   const [bigShoeImg, setBigShoeImg] = useState(bigShoe1);
+  useGSAP(() => {
+    // gsap.from(".hero-text", {
+    //   y: -200,
+    //   // skewX: 65,
+    //   opacity: 0,
+    //   // skewX: -65,
+    //   duration: 1,
+    //   delay: 1,
+
+    //   stagger: {
+    //     amount: 0.4,
+    //   },
+    // });
+
+    gsap.fromTo(
+      ".bigshoe",
+      {
+        opacity: 0,
+        scale: 0,
+        rotation: 400,
+      },
+      {
+        duration: 1,
+        delay: 2,
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+      }
+    );
+  });
 
   return (
     <section
       id="home"
       className="w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container"
     >
-      <div className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28 ">
+      <ScrollReveal.div className="hero-text relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28 ">
         <p className="text-xl font-montserrat text-coral-red">
           Our Summer Collections
         </p>
@@ -41,15 +74,15 @@ const Hero = () => {
             </div>
           ))}
         </div>
-      </div>
+      </ScrollReveal.div>
 
-      <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center">
+      <ScrollReveal.div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-hero bg-cover bg-center">
         <img
           src={bigShoeImg}
           alt="shoe Image"
           width={610}
           height={500}
-          className="object-contain relative  z-10"
+          className="object-contain relative  z-10 bigshoe"
         />
 
         <div className="flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6">
@@ -63,7 +96,7 @@ const Hero = () => {
             </div>
           ))}
         </div>
-      </div>
+      </ScrollReveal.div>
     </section>
   );
 };

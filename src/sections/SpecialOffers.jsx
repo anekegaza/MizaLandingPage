@@ -1,20 +1,47 @@
 import { arrowRight } from "../assets/icons";
 import { offer } from "../assets/images";
 import Button from "../components/Button";
+import { ScrollReveal } from "reveal-on-scroll-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const SpecialOffers = () => {
+  useGSAP(() => {
+    // gsap.from(".special-img", {
+    //   x: -500,
+    //   repeat: -1,
+    //   duration: 2,
+    //   yoyo: true,
+    // });
+
+    gsap.fromTo(
+      ".special-img",
+      {
+        opacity: 0,
+        scale: 0,
+        rotation: 400,
+      },
+      {
+        duration: 1,
+        delay: 2,
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+      }
+    );
+  }, []);
   return (
     <section className="flex justify-wrap items-center max-xl:flex-col-reverse gap-10 max-container">
-      <div className="flex-1">
+      <ScrollReveal.div className="flex-1">
         <img
           src={offer}
           alt="offer"
           width={773}
           height={687}
-          className="object-contain w-full"
+          className="object-contain w-full special-img"
         />
-      </div>
-      <div className="flex flex-1 flex-col ">
+      </ScrollReveal.div>
+      <ScrollReveal.div className="flex flex-1 flex-col ">
         <h2 className=" font-palanquin text-4xl capitalize lg-max:max-w-lg font-bold">
           <span className="text-coral-red">Special</span> Offer
         </h2>
@@ -35,7 +62,7 @@ const SpecialOffers = () => {
             textColor="text-slate-gray"
           />
         </div>
-      </div>
+      </ScrollReveal.div>
     </section>
   );
 };

@@ -1,10 +1,11 @@
+import { ScrollReveal } from "reveal-on-scroll-react";
 import { copyrightSign } from "../assets/icons";
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => {
   return (
     <footer className="max-container ">
-      <div className="flex justify-between items-start gap-20 flex-wrap max-lg:flex-col">
+      <ScrollReveal.div className="flex justify-between items-start gap-20 flex-wrap max-lg:flex-col">
         <div className="flex flex-col items-start ">
           <a href="/">
             <h3 className="text-white font-bold font-mono text-4xl italic">
@@ -44,8 +45,8 @@ const Footer = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className="flex justify-between text-white-400 mt-24    max-sm:flex-col  max-sm:items-center">
+      </ScrollReveal.div>
+      <ScrollReveal.div className="flex justify-between text-white-400 mt-24    max-sm:flex-col  max-sm:items-center">
         <div className="flex flex-1 justify-start items-center gap-2 font-montserrat cursor-pointer">
           <img src={copyrightSign} alt="copyright" width={20} height={20} />
           <p>Copyright. All rights reserved.</p>
@@ -58,7 +59,7 @@ const Footer = () => {
         >
           <p className="hover:text-white">Made with Love by Aneke Ifeanyi</p>
         </div>
-      </div>
+      </ScrollReveal.div>
     </footer>
   );
 };
